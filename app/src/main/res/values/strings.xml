@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Geo</string>
+    <string name="btn_location">Location</string>
+    <string name="btn_get_current_location">Get current location</string>
+    <string name="title_location">Location</string>
+    <string name="lat">Lat: No data</string>
+    <string name="lat_data">Lat: %.4f</string>
+    <string name="lon">Lon No data</string>
+    <string name="lon_data">Lon %.4f</string>
+    <string name="btn_watch_location">Watch location</string>
+</resources>
