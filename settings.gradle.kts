@@ -17,3 +17,4 @@ rootProject.name = "Geo"
 include(":app")
 include(":domain")
 include(":geomock")
+include(":geogms")

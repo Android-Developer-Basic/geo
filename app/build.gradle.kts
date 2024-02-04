@@ -45,11 +45,17 @@ android {
         create("mock") {
             dimension = "geoTarget"
         }
+        // Uses GMS location data.
+        create("gms") {
+            dimension = "geoTarget"
+        }
     }
 }
 
 // A new configuration named mockImplementation is added to the project.
 val mockImplementation by configurations
+// A new configuration named mockImplementation is added to the project.
+val gmsImplementation by configurations
 
 dependencies {
     implementation(project(":domain"))
@@ -57,6 +63,9 @@ dependencies {
     // The mockImplementation configuration is used to declare a dependency on the geomock module.
     // Will be used only in the mock flavor.
     mockImplementation(project(":geomock"))
+    // The gmsImplementation configuration is used to declare a dependency on the geogms module.
+    // Will be used only in the GMS flavor.
+    gmsImplementation(project(":geogms"))
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
