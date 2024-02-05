@@ -91,6 +91,14 @@ class MapsActivity : AppCompatActivity() {
     private fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
         followMapLocation()
+
+        withMaps {
+            setOnMarkerClickListener {
+                Log.i(TAG, "Marker clicked: ${it.tag}: ${it.title}")
+                // Return false to allow the default behavior
+                false
+            }
+        }
     }
 
     // Camera movement
@@ -131,17 +139,20 @@ class MapsActivity : AppCompatActivity() {
             .icon(bitmap)
             .title("Marker ${nextMarkerId++}")
 
-        addMarker(marker)
+        addMarker(marker).apply {
+            this?.tag = nextMarkerId
+        }
     }
 
     private fun addCircle() = withMaps {
         val latLng = cameraPosition.target
 
         val circle = CircleOptions()
-                .center(latLng)
-                .radius(10000.0)
-                .fillColor(ColorGenerator.generateColor())
-                .strokeColor(ColorGenerator.generateColor())
+            .center(latLng)
+            .radius(10000.0)
+            .fillColor(ColorGenerator.generateColor())
+            .strokeColor(ColorGenerator.generateColor())
+
 
         addCircle(circle)
     }
@@ -149,13 +160,13 @@ class MapsActivity : AppCompatActivity() {
     private fun addPolygon() = withMaps {
         val latLng = cameraPosition.target
         val polygon = PolygonOptions()
-                .add(
-                    latLng,
-                    LatLng(latLng.latitude + 0.1, latLng.longitude),
-                    LatLng(latLng.latitude, latLng.longitude + 0.1)
-                )
-                .fillColor(ColorGenerator.generateColor())
-                .strokeColor(ColorGenerator.generateColor())
+            .add(
+                latLng,
+                LatLng(latLng.latitude + 0.1, latLng.longitude),
+                LatLng(latLng.latitude, latLng.longitude + 0.1)
+            )
+            .fillColor(ColorGenerator.generateColor())
+            .strokeColor(ColorGenerator.generateColor())
 
         addPolygon(polygon)
     }
