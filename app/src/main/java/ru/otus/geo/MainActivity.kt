@@ -14,5 +14,9 @@ class MainActivity : AppCompatActivity() {
         view.location.setOnClickListener {
             LocationActivity.start(this)
         }
+
+        view.service.setOnClickListener {
+            ServiceActivity.start(this)
+        }
     }
 }

@@ -8,6 +8,12 @@
     <!-- Include only if your app benefits from precise location access. -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <!-- Needed to run foreground location services -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION"/>
+    <!-- Needed to display service notifications -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <application
         android:allowBackup="true"
         android:name=".App"
@@ -31,6 +37,15 @@
 
         <activity
             android:name=".LocationActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ServiceActivity"
+            android:exported="false"/>
+
+        <service
+            android:name=".LocationTrackingService"
+            android:foregroundServiceType="location"
             android:exported="false"/>
 
     </application>

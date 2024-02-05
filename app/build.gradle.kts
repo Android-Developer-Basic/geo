@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "ru.otus.geo"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -59,6 +59,7 @@ val gmsImplementation by configurations
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":net"))
 
     // The mockImplementation configuration is used to declare a dependency on the geomock module.
     // Will be used only in the mock flavor.
@@ -73,6 +74,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-service:2.7.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     implementation("com.google.dagger:hilt-android:2.50")

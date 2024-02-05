@@ -27,11 +27,11 @@ class LocationPermissionHelper @Inject constructor(
             block()
         } else {
             toRun = listPermissions to block
-            requestLocationPermission(listPermissions, block)
+            requestLocationPermission(listPermissions)
         }
     }
 
-    private fun requestLocationPermission(permissions: List<String>, block: () -> Unit) {
+    private fun requestLocationPermission(permissions: List<String>) {
         launcher.launch(permissions.toTypedArray())
     }
 }
