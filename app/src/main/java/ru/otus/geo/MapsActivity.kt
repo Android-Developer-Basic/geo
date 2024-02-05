@@ -75,6 +75,7 @@ class MapsActivity : AppCompatActivity() {
 
     private fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap
+        followMapLocation()
     }
 
     // Camera movement
@@ -95,6 +96,14 @@ class MapsActivity : AppCompatActivity() {
 
     private fun stopFollowLocation() {
         followJob?.cancel()
+    }
+
+    // Gets map location when camera is idle
+    private fun followMapLocation() = withMaps {
+        setOnCameraIdleListener {
+            val latLng = cameraPosition.target
+            Log.i(TAG, "Map Location: $latLng")
+        }
     }
 
 }
