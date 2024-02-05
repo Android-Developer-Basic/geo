@@ -16,4 +16,6 @@
     <string name="lon">Lon No data</string>
     <string name="lon_data">Lon %.4f</string>
     <string name="title_maps">Maps</string>
+    <string name="btn_follow_location">Follow location</string>
+    <string name="btn_stop_follow_location">Stop follow location</string>
 </resources>
