@@ -18,4 +18,7 @@
     <string name="title_maps">Maps</string>
     <string name="btn_follow_location">Follow location</string>
     <string name="btn_stop_follow_location">Stop follow location</string>
+    <string name="btn_add_marker">Add marker</string>
+    <string name="btn_add_circle">Add circle</string>
+    <string name="btn_add_poly">Add polygon</string>
 </resources>

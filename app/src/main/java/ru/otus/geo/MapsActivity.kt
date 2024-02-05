@@ -13,7 +13,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.PolygonOptions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -64,6 +67,15 @@ class MapsActivity : AppCompatActivity() {
             stopFollowLocation.setOnClickListener {
                 stopFollowLocation()
             }
+            addMarker.setOnClickListener {
+                addMarker()
+            }
+            addCircle.setOnClickListener {
+                addCircle()
+            }
+            addPoly.setOnClickListener {
+                addPolygon()
+            }
         }
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
@@ -106,4 +118,42 @@ class MapsActivity : AppCompatActivity() {
         }
     }
 
+    private var nextMarkerId = 1
+    private fun addMarker() = withMaps {
+        val latLng = cameraPosition.target
+        val bitmap = BitmapGenerator.generateBitmap(this@MapsActivity, ColorGenerator.generateColor())
+
+        val marker = MarkerOptions()
+            .position(latLng)
+            .icon(bitmap)
+            .title("Marker ${nextMarkerId++}")
+
+        addMarker(marker)
+    }
+
+    private fun addCircle() = withMaps {
+        val latLng = cameraPosition.target
+
+        val circle = CircleOptions()
+                .center(latLng)
+                .radius(10000.0)
+                .fillColor(ColorGenerator.generateColor())
+                .strokeColor(ColorGenerator.generateColor())
+
+        addCircle(circle)
+    }
+
+    private fun addPolygon() = withMaps {
+        val latLng = cameraPosition.target
+        val polygon = PolygonOptions()
+                .add(
+                    latLng,
+                    LatLng(latLng.latitude + 0.1, latLng.longitude),
+                    LatLng(latLng.latitude, latLng.longitude + 0.1)
+                )
+                .fillColor(ColorGenerator.generateColor())
+                .strokeColor(ColorGenerator.generateColor())
+
+        addPolygon(polygon)
+    }
 }

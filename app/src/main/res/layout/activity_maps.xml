@@ -63,4 +63,37 @@
         app:layout_constraintStart_toEndOf="@id/follow_location"
         app:layout_constraintTop_toBottomOf="@id/buttons" />
 
+    <Button
+        android:id="@+id/add_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_add_marker"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@id/add_circle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stop_follow_location" />
+
+    <Button
+        android:id="@+id/add_circle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_add_circle"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@id/add_poly"
+        app:layout_constraintStart_toEndOf="@id/add_marker"
+        app:layout_constraintTop_toBottomOf="@id/stop_follow_location" />
+
+    <Button
+        android:id="@+id/add_poly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_add_poly"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/add_circle"
+        app:layout_constraintTop_toBottomOf="@id/stop_follow_location" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
