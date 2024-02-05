@@ -99,6 +99,13 @@ class MapsActivity : AppCompatActivity() {
                 false
             }
         }
+
+        withMaps {
+            setOnCircleClickListener {
+                it.fillColor = ColorGenerator.generateColor()
+                it.strokeColor = ColorGenerator.generateColor()
+            }
+        }
     }
 
     // Camera movement
@@ -152,7 +159,7 @@ class MapsActivity : AppCompatActivity() {
             .radius(10000.0)
             .fillColor(ColorGenerator.generateColor())
             .strokeColor(ColorGenerator.generateColor())
-
+            .clickable(true)
 
         addCircle(circle)
     }
