@@ -106,6 +106,12 @@ class MapsActivity : AppCompatActivity() {
                 it.strokeColor = ColorGenerator.generateColor()
             }
         }
+
+        withMaps {
+            setOnMapLongClickListener {
+                addMarker(it)
+            }
+        }
     }
 
     // Camera movement
@@ -139,6 +145,9 @@ class MapsActivity : AppCompatActivity() {
     private var nextMarkerId = 1
     private fun addMarker() = withMaps {
         val latLng = cameraPosition.target
+        addMarker(latLng)
+    }
+    private fun addMarker(latLng: LatLng) = withMaps {
         val bitmap = BitmapGenerator.generateBitmap(this@MapsActivity, ColorGenerator.generateColor())
 
         val marker = MarkerOptions()
