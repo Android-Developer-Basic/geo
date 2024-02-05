@@ -18,5 +18,9 @@ class MainActivity : AppCompatActivity() {
         view.service.setOnClickListener {
             ServiceActivity.start(this)
         }
+
+        view.maps.setOnClickListener {
+            MapsActivity.start(this)
+        }
     }
 }
