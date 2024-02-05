@@ -76,6 +76,9 @@ class MapsActivity : AppCompatActivity() {
             addPoly.setOnClickListener {
                 addPolygon()
             }
+            clear.setOnClickListener {
+                onClear()
+            }
         }
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
@@ -155,5 +158,9 @@ class MapsActivity : AppCompatActivity() {
                 .strokeColor(ColorGenerator.generateColor())
 
         addPolygon(polygon)
+    }
+
+    private fun onClear() = withMaps {
+        clear()
     }
 }
